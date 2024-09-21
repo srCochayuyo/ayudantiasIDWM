@@ -10,7 +10,7 @@ Env.Load();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source=app.db";
+string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source=app.db"; //True, false
 builder.Services.AddDbContext<ApplicationDBContext>(opt => opt.UseSqlite(connectionString));
 
 var app = builder.Build();
