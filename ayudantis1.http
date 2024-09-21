@@ -1,0 +1,6 @@
+@ayudantis1_HostAddress = http://localhost:5211
+
+GET {{ayudantis1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
