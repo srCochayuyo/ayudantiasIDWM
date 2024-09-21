@@ -11,8 +11,8 @@ using ayudantis1.src.Data;
 namespace ayudantis1.src.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240921185341_firstMigration")]
-    partial class firstMigration
+    [Migration("20240921230029_addSeeders")]
+    partial class addSeeders
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

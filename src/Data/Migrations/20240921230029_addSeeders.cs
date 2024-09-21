@@ -5,7 +5,7 @@
 namespace ayudantis1.src.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class firstMigration : Migration
+    public partial class addSeeders : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
