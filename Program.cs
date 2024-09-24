@@ -1,4 +1,6 @@
 using ayudantis1.src.Data;
+using ayudantis1.src.Interface;
+using ayudantis1.src.Repository;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +12,7 @@ Env.Load();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IProductsRepository, ProductRepository>();
 
 string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source=app.db"; //True, false
 builder.Services.AddDbContext<ApplicationDBContext>(opt => opt.UseSqlite(connectionString));

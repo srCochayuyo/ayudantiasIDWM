@@ -31,7 +31,7 @@ namespace ayudantis1.src.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products.ToListAsync(); //borrar
             var productDto = products.Select(p => p.ToProductDto());
             return Ok(productDto);
         }
