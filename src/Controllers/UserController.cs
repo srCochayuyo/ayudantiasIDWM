@@ -53,8 +53,7 @@ namespace ayudantis1.src.Controllers
         public IActionResult Post([FromBody] User user)
         {
             var role = _context.Roles.FirstOrDefault(r => r.Id == user.RoleId);
-
-            if(role == null)
+            if (role == null)
             {
                 return BadRequest("Role not found");
             }

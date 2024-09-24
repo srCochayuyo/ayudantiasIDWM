@@ -15,6 +15,6 @@ namespace ayudantis1.src.models
 
         //Entity Framework relationships
 
-        public List<User> Users {get; set;} = [];
+         public List<User> Users { get;} = [];
     }
 }
