@@ -16,7 +16,7 @@ namespace ayudantis1.src.models
         public string Email { get; set; } = string.Empty;
 
         //Entity Framework Relationships
-        public List<Product> Products = [];
+        public List<Product> Products {get;} = [];
 
         public int RoleId { get; set; }
 
