@@ -4,6 +4,8 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using ayudantis1.src.Data;
+using ayudantis1.src.Dtos;
+using ayudantis1.src.Mappers;
 using ayudantis1.src.models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +28,7 @@ namespace ayudantis1.src.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var products = _context.Products;
+            var products = _context.Products.ToList().Select(p => p.ToProductDto());
             return Ok(products);
         }
 
@@ -40,25 +42,27 @@ namespace ayudantis1.src.Controllers
             {
                 return NotFound();
             }
-            return Ok(product);
+            return Ok(product.ToProductDto());
         }
 
         //Post
 
         [HttpPost]
 
-        public IActionResult Post ([FromBody] Product product)
+        public IActionResult Post ([FromBody] CreateProductRequestDto productDto)
         {
-            _context.Products.Add(product);
+            var productModel = productDto.ToProductFromCreateDto();
+            _context.Products.Add(productModel);
             _context.SaveChanges();
-            return Ok(product);
+            return CreatedAtAction(nameof(GetById), new {id = productModel.Id}, productModel.ToProductDto());
         }
+
 
         //Put
 
         [HttpPut("{id}")]
 
-        public IActionResult Put([FromRoute] int id, [FromBody] Product product)
+        public IActionResult Put([FromRoute] int id, [FromBody] UpdateProductRequestDto UpdateDto)
         {
             var existingProduct = _context.Products.FirstOrDefault(p => p.Id == id);
             if(existingProduct == null)
@@ -66,8 +70,8 @@ namespace ayudantis1.src.Controllers
                 return NotFound();
             }
 
-            existingProduct.Name = product.Name;
-            existingProduct.Price = product.Price;
+            existingProduct.Name = UpdateDto.Name;
+            existingProduct.Price = UpdateDto.Price;
             _context.SaveChanges();
             return Ok(existingProduct);
             

@@ -7,14 +7,15 @@ namespace ayudantis1.src.models
 {
     public class Product
     {
-          public int Id { get; set; }
+        public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+      public string Name { get; set; } = string.Empty;
 
-        public int Price { get; set; }
+      public int Price { get; set; }
 
-        //Entity Framework relationships
+      //Entity Framework relationships
 
-         public List<User> Users { get;} = [];
+       public List<User> Users { get;} = [];
+       
     }
 }
