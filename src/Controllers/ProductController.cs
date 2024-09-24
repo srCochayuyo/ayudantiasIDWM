@@ -34,7 +34,7 @@ namespace ayudantis1.src.Controllers
 
         public IActionResult GetById([FromRoute] int id)
         {
-            var product = _context.Products;
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
 
             if(product == null)
             {
